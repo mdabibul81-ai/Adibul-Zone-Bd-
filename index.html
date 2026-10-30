@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adibul Zone BD</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#061329;color:white;
+ font-family:Arial,sans-serif;text-align:center
+}
+header{
+ background:linear-gradient(135deg,#001b52,#087cff);
+ padding:30px 15px
+}
+.logo{
+ width:125px;height:125px;object-fit:contain;
+ border-radius:50%;background:white;
+ border:3px solid #00d9ff
+}
+h1{color:#00d9ff}
+.card{
+ background:#102746;padding:22px;
+ margin:20px auto;max-width:450px;
+ border-radius:15px;border:1px solid #087cff
+}
+button,.btn{
+ display:inline-block;padding:12px 20px;
+ margin:7px;border:0;border-radius:9px;
+ background:#087cff;color:white;
+ text-decoration:none;font-size:15px;
+ cursor:pointer
+}
+#editor{display:none}
+#pencil{display:none;background:#e5a900;color:#111}
+input{
+ width:95%;padding:12px;margin:8px 0;
+ border-radius:8px;border:1px solid #087cff
+}
+footer{padding:20px;color:#aaa}
+</style>
+</head>
+<body>
+
+<header>
+<img id="logo" class="logo"
+src="adibul-zone-logo.png" alt="AZBD Logo">
+<h1 id="siteName">ADIBUL ZONE BD</h1>
+<p id="welcome">Welcome to our Official Website</p>
+</header>
+
+<main>
+<div class="card">
+<h2>Welcome!</h2>
+<p>Adibul Zone BD Official Website</p>
+</div>
+
+<div class="card">
+<h2>Android App</h2>
+<p>আমাদের Android অ্যাপ ডাউনলোড করুন।</p>
+<a id="android" class="btn" href="app.apk">Download APK</a>
+</div>
+
+<div class="card">
+<h2>iPhone / iOS</h2>
+<a id="iphone" class="btn" href="#">Open Website</a>
+</div>
+
+<div class="card">
+<h2>Website Customize</h2>
+<button onclick="login()">Customize</button>
+<button id="pencil" onclick="openEditor()">✏️ Edit</button>
+<p id="status"></p>
+</div>
+
+<div class="card" id="editor">
+<h2>✏️ Edit Website</h2>
+
+<p>Website Name</p>
+<input id="nameInput" placeholder="Website Name">
+
+<p>Welcome Text</p>
+<input id="welcomeInput" placeholder="Welcome Text">
+
+<p>Android APK Link</p>
+<input id="androidInput" placeholder="APK Link">
+
+<p>iPhone Website Link</p>
+<input id="iphoneInput" placeholder="Website Link">
+
+<p>Change Profile Logo</p>
+<input type="file" id="imageInput" accept="image/*">
+
+<br>
+<button onclick="saveChanges()">Save Changes</button>
+<button onclick="closeEditor()">Close Editor</button>
+</div>
+</main>
+
+<footer>© 2026 Adibul Zone BD</footer>
+
+<script>
+const PASSWORD="AZBD2026";
+
+function login(){
+ let pass=prompt("Enter Customize Password:");
+ if(pass===null)return;
+
+ if(pass===PASSWORD){
+  document.getElementById("status").textContent="Password Accepted!";
+  document.getElementById("pencil").style.display="inline-block";
+ }else{
+  document.getElementById("status").textContent="Wrong Password!";
+ }
+}
+
+function openEditor(){
+ document.getElementById("editor").style.display="block";
+ nameInput.value=siteName.textContent;
+ welcomeInput.value=welcome.textContent;
+ androidInput.value=android.getAttribute("href");
+ iphoneInput.value=iphone.getAttribute("href");
+ window.scrollTo(0,document.body.scrollHeight);
+}
+
+function saveChanges(){
+ siteName.textContent=nameInput.value;
+ welcome.textContent=welcomeInput.value;
+ android.href=androidInput.value;
+ iphone.href=iphoneInput.value;
+
+ const image=imageInput.files[0];
+
+ function finish(){
+  localStorage.setItem("azbd_name",nameInput.value);
+  localStorage.setItem("azbd_welcome",welcomeInput.value);
+  localStorage.setItem("azbd_android",androidInput.value);
+  localStorage.setItem("azbd_iphone",iphoneInput.value);
+  alert("Changes Saved!");
+ }
+
+ if(image){
+  const reader=new FileReader();
+  reader.onload=function(){
+   logo.src=reader.result;
+   localStorage.setItem("azbd_logo",reader.result);
+   finish();
+  };
+  reader.readAsDataURL(image);
+ }else finish();
+}
+
+function closeEditor(){
+ editor.style.display="none";
+}
+
+window.onload=function(){
+ const fields=[
+ ["azbd_name","siteName"],
+ ["azbd_welcome","welcome"],
+ ["azbd_android","android"],
+ ["azbd_iphone","iphone"]
+ ];
+ fields.forEach(([key,id])=>{
+  const value=localStorage.getItem(key);
+  if(value){
+   if(id==="android"||id==="iphone")
+    document.getElementById(id).href=value;
+   else document.getElementById(id).textContent=value;
+  }
+ });
+ const savedLogo=localStorage.getItem("azbd_logo");
+ if(savedLogo)logo.src=savedLogo;
+};
+</script>
+</body>
+  </html>
+  
