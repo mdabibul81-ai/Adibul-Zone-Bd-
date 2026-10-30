@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adibul Zone BD Gaming</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#071426;color:white;
+ font-family:Arial;text-align:center
+}
+header{
+ background:linear-gradient(135deg,#001b52,#087cff);
+ padding:30px 15px
+}
+.logo{
+ width:120px;height:120px;
+ border-radius:50%;object-fit:contain;
+ background:white
+}
+h1{color:#00d9ff}
+.card{
+ background:#142b48;
+ margin:20px auto;padding:25px;
+ max-width:430px;border-radius:16px
+}
+button,a{
+ display:inline-block;
+ padding:13px 22px;margin:8px;
+ border:0;border-radius:9px;
+ background:#087cff;color:white;
+ text-decoration:none;font-weight:bold;
+ cursor:pointer
+}
+.download{background:#16a34a}
+footer{padding:25px;color:#aaa}
+</style>
+</head>
+<body>
+
+<header>
+<img class="logo" src="adibul-zone-logo.png"
+alt="Adibul Zone BD">
+<h1>ADIBUL ZONE BD</h1>
+<p>Official Gaming Website</p>
+</header>
+
+<div class="card">
+<h2>Welcome Gamers!</h2>
+<p>Adibul Zone BD Gaming World-এ স্বাগতম।</p>
+</div>
+
+<div class="card">
+<h2>🎮 Android Game</h2>
+<p>আমাদের Android গেম ডাউনলোড করুন।</p>
+<a class="download"
+href="downloads/adibul-zone.apk" download>
+Download Android APK
+</a>
+</div>
+
+<div class="card">
+<h2>🍎 iPhone Users</h2>
+<p>iPhone ব্যবহারকারীরা আমাদের ওয়েবসাইট ব্যবহার করুন।</p>
+<a href="https://example.com">
+Open Website
+</a>
+</div>
+
+<div class="card">
+<h2>🏆 Free Tournament</h2>
+<p>বিনামূল্যে গেমিং টুর্নামেন্টে অংশ নিন।</p>
+<p>নতুন টুর্নামেন্টের তথ্য শীঘ্রই আসবে।</p>
+</div>
+
+<footer>
+© 2026 Adibul Zone BD
+</footer>
+
+</body>
+</html>
